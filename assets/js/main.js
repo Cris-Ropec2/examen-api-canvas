@@ -77,13 +77,13 @@ function dibujarDinosaurio(ctx) {
     dibujarPatas(ctx);
 }
 function dibujarCuerpo(ctx) {
-    ctx.fillStyle = "#4CAF50";
+    ctx.fillStyle = "#4b9d4e";
     ctx.beginPath();
     ctx.ellipse(350, 300, 150, 80, 0, 0, Math.PI * 2);
     ctx.fill();
 }
 function dibujarCola(ctx) {
-    ctx.fillStyle = "#4CAF50";
+    ctx.fillStyle = "#4a934c";
     ctx.beginPath();
     ctx.moveTo(480, 300);
     ctx.quadraticCurveTo(580, 250, 550, 320);
@@ -91,13 +91,21 @@ function dibujarCola(ctx) {
     ctx.fill();
 }
 function dibujarCuello(ctx) {
-    ctx.fillStyle = "#4CAF50";
+    ctx.fillStyle = "#4a934c";
     ctx.fillRect(230, 180, 60, 140);
 }
 function dibujarCabeza(ctx) {
     ctx.fillStyle = "#4CAF50";
     ctx.beginPath();
-    ctx.roundRect(200, 130, 120, 80, 30);
+    ctx.moveTo(220, 130);
+    ctx.lineTo(300, 130);
+    ctx.quadraticCurveTo(330, 130, 330, 160);
+    ctx.lineTo(330, 190);
+    ctx.quadraticCurveTo(330, 220, 300, 220);
+    ctx.lineTo(220, 220);
+    ctx.quadraticCurveTo(190, 220, 190, 190);
+    ctx.lineTo(190, 160);
+    ctx.quadraticCurveTo(190, 130, 220, 130);
     ctx.fill();
 }
 function dibujarOjo(ctx) {
@@ -112,7 +120,7 @@ function dibujarOjo(ctx) {
     ctx.fill();
 }
 function dibujarPatas(ctx) {
-    ctx.fillStyle = "#4CAF50";
+    ctx.fillStyle = "#4a934c";
     ctx.fillRect(320, 330, 40, 100);
     ctx.fillRect(400, 330, 40, 100);
 }
