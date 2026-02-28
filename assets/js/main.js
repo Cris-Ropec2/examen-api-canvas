@@ -71,14 +71,13 @@ function dibujarSuelo(ctx) {
 /* ============================= */
 
 function dibujarDinosaurio(ctx) {
-    dibujarCola(ctx);
-    dibujarCuerpo(ctx);
-    dibujarPatas(ctx);
-    dibujarCuello(ctx);
-    dibujarCabeza(ctx);
-    dibujarOjo(ctx);
-    dibujarPlacas(ctx);
-    dibujarManchas(ctx);
+    dibujarCola(ctx);        
+    dibujarCuerpo(ctx);      
+    dibujarManchas(ctx);     
+    dibujarPlacas(ctx);      
+    dibujarPatas(ctx);       
+    dibujarCuello(ctx);      
+    dibujarCabeza(ctx);   
 }
 function dibujarCuerpo(ctx) {
     // Color principal
@@ -104,8 +103,8 @@ function dibujarCola(ctx) {
 
     ctx.beginPath();
     ctx.moveTo(470, 300);
-    ctx.quadraticCurveTo(580, 260, 550, 330);
-    ctx.quadraticCurveTo(520, 370, 450, 340);
+    ctx.quadraticCurveTo(610, 250, 600, 320);
+    ctx.quadraticCurveTo(580, 350, 450, 330);
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
@@ -113,9 +112,9 @@ function dibujarCola(ctx) {
     // Parte inferior clara
     ctx.fillStyle = "#9CCC65";
     ctx.beginPath();
-    ctx.moveTo(480, 330);
-    ctx.quadraticCurveTo(550, 315, 520, 350);
-    ctx.quadraticCurveTo(500, 365, 480, 350);
+    ctx.moveTo(470, 325);
+    ctx.quadraticCurveTo(560, 310, 540, 345);
+    ctx.quadraticCurveTo(520, 355, 470, 340);
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
@@ -125,9 +124,9 @@ function dibujarCuello(ctx) {
     ctx.strokeStyle = "black";
     ctx.lineWidth = 3;
 
-    for (let i = 0; i < 8; i++) {  
+    for (let i = 0; i < 6; i++) {  
         ctx.beginPath();
-        ctx.roundRect(320, 260 - (i * 30), 70, 35, 20);
+        ctx.roundRect(330, 270 - (i * 28), 60, 35, 20);
         ctx.fill();
         ctx.stroke();
     }
@@ -137,21 +136,32 @@ function dibujarCabeza(ctx) {
     ctx.strokeStyle = "black";
     ctx.lineWidth = 3;
 
-    // cabeza
     ctx.beginPath();
-    ctx.roundRect(300, 30, 100, 70, 25);
+    ctx.roundRect(315, 80, 90, 65, 25);
     ctx.fill();
     ctx.stroke();
 
-    // nariz
+    // Ojo
+    ctx.fillStyle = "white";
     ctx.beginPath();
-    ctx.arc(380, 65, 5, 0, Math.PI * 2);
+    ctx.arc(355, 105, 12, 0, Math.PI * 2);
     ctx.fill();
     ctx.stroke();
 
-    // sonrisa
+    ctx.fillStyle = "black";
     ctx.beginPath();
-    ctx.arc(345, 80, 20, 0, Math.PI);
+    ctx.arc(360, 105, 5, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Nariz
+    ctx.beginPath();
+    ctx.arc(390, 105, 4, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+
+    // Sonrisa
+    ctx.beginPath();
+    ctx.arc(365, 120, 18, 0, Math.PI);
     ctx.stroke();
 }
 function dibujarOjo(ctx) {
@@ -175,16 +185,16 @@ function dibujarPatas(ctx) {
     ctx.lineWidth = 3;
 
     const patas = [
-        {x: 280, y: 360},
-        {x: 350, y: 360},
-        {x: 420, y: 360},
-        {x: 490, y: 360}
+        {x: 280, y: 360, w: 50, h: 95},
+        {x: 340, y: 360, w: 50, h: 95},
+        {x: 420, y: 350, w: 65, h: 110},
+        {x: 500, y: 350, w: 65, h: 110}
     ];
 
     patas.forEach(pata => {
 
         ctx.beginPath();
-        ctx.roundRect(pata.x, pata.y, 55, 100, 20);
+        ctx.roundRect(pata.x, pata.y, pata.w, pata.h, 20);
         ctx.fill();
         ctx.stroke();
 
@@ -206,13 +216,13 @@ function dibujarPlacas(ctx) {
     ctx.lineWidth = 3;
 
     const placas = [
-        {x: 320, y: 230},
-        {x: 360, y: 210},
-        {x: 400, y: 200},
-        {x: 440, y: 205},
-        {x: 480, y: 220},
-        {x: 520, y: 240},
-        {x: 560, y: 260}
+        {x: 330, y: 240},
+        {x: 370, y: 225},
+        {x: 410, y: 215},
+        {x: 450, y: 220},
+        {x: 490, y: 235},
+        {x: 530, y: 255},
+        {x: 570, y: 275}
     ];
 
     placas.forEach(p => {
