@@ -72,9 +72,9 @@ function dibujarDinosaurio(ctx) {
     dibujarPatas(ctx);
     dibujarCuello(ctx);
     dibujarCabeza(ctx);
+    dibujarOjo(ctx);
     dibujarPlacas(ctx);
     dibujarManchas(ctx);
-    dibujarOjo(ctx);
 }
 function dibujarCuerpo(ctx) {
     ctx.fillStyle = "#66BB6A";   // verde más claro
@@ -87,16 +87,29 @@ function dibujarCuerpo(ctx) {
     ctx.stroke();
 }
 function dibujarCola(ctx) {
-    ctx.fillStyle = "#4a934c";
+    ctx.fillStyle = "#66BB6A";
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 3;
+
     ctx.beginPath();
     ctx.moveTo(480, 300);
     ctx.quadraticCurveTo(580, 250, 550, 320);
     ctx.quadraticCurveTo(520, 350, 480, 330);
+    ctx.closePath();
     ctx.fill();
+    ctx.stroke();
 }
 function dibujarCuello(ctx) {
-    ctx.fillStyle = "#4a934c";
-    ctx.fillRect(230, 180, 60, 140);
+    ctx.fillStyle = "#66BB6A";
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 3;
+
+    for (let i = 0; i < 4; i++) {
+        ctx.beginPath();
+        ctx.ellipse(260, 270 - (i * 35), 35, 25, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+    }
 }
 function dibujarCabeza(ctx) {
     ctx.fillStyle = "#4CAF50";
@@ -124,19 +137,33 @@ function dibujarOjo(ctx) {
     ctx.fill();
 }
 function dibujarPatas(ctx) {
-    ctx.fillStyle = "#4a934c";
-    ctx.fillRect(320, 330, 40, 100);
-    ctx.fillRect(400, 330, 40, 100);
+    ctx.fillStyle = "#66BB6A";
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 3;
+
+    ctx.beginPath();
+    ctx.roundRect(320, 330, 50, 100, 20);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.roundRect(400, 330, 50, 100, 20);
+    ctx.fill();
+    ctx.stroke();
 }
 function dibujarPlacas(ctx) {
     ctx.fillStyle = "#1976D2";
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 2;
 
     for (let i = 0; i < 5; i++) {
         ctx.beginPath();
-        ctx.moveTo(300 + i * 40, 240);
-        ctx.lineTo(320 + i * 40, 200);
-        ctx.lineTo(340 + i * 40, 240);
+        ctx.moveTo(330 + i * 40, 260);
+        ctx.lineTo(350 + i * 40, 220);
+        ctx.lineTo(370 + i * 40, 260);
+        ctx.closePath();
         ctx.fill();
+        ctx.stroke();
     }
 }
 function dibujarManchas(ctx) {
