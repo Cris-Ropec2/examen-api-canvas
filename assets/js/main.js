@@ -52,14 +52,18 @@ function dibujarNube(ctx, x, y) {
 }
 function dibujarSuelo(ctx) {
     ctx.fillStyle = "#4CAF50";
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 3;
 
     ctx.beginPath();
-    ctx.arc(200, 500, 300, Math.PI, 2 * Math.PI);
+    ctx.arc(200, 520, 200, Math.PI, 2 * Math.PI);
     ctx.fill();
+    ctx.stroke();
 
     ctx.beginPath();
-    ctx.arc(450, 500, 250, Math.PI, 2 * Math.PI);
+    ctx.arc(450, 520, 200, Math.PI, 2 * Math.PI);
     ctx.fill();
+    ctx.stroke();
 }
 
 /* ============================= */
@@ -99,9 +103,19 @@ function dibujarCola(ctx) {
     ctx.lineWidth = 3;
 
     ctx.beginPath();
-    ctx.moveTo(490, 300);
-    ctx.quadraticCurveTo(600, 250, 570, 320);
-    ctx.quadraticCurveTo(540, 350, 490, 330);
+    ctx.moveTo(470, 300);
+    ctx.quadraticCurveTo(580, 260, 550, 330);
+    ctx.quadraticCurveTo(520, 370, 450, 340);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+
+    // Parte inferior clara
+    ctx.fillStyle = "#9CCC65";
+    ctx.beginPath();
+    ctx.moveTo(480, 330);
+    ctx.quadraticCurveTo(550, 315, 520, 350);
+    ctx.quadraticCurveTo(500, 365, 480, 350);
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
@@ -111,36 +125,48 @@ function dibujarCuello(ctx) {
     ctx.strokeStyle = "black";
     ctx.lineWidth = 3;
 
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 8; i++) {  
         ctx.beginPath();
-        ctx.ellipse(260, 270 - (i * 35), 35, 25, 0, 0, Math.PI * 2);
+        ctx.roundRect(320, 260 - (i * 30), 70, 35, 20);
         ctx.fill();
         ctx.stroke();
     }
 }
 function dibujarCabeza(ctx) {
-    ctx.fillStyle = "#4CAF50";
+    ctx.fillStyle = "#66BB6A";
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 3;
+
+    // cabeza
     ctx.beginPath();
-    ctx.moveTo(220, 130);
-    ctx.lineTo(300, 130);
-    ctx.quadraticCurveTo(330, 130, 330, 160);
-    ctx.lineTo(330, 190);
-    ctx.quadraticCurveTo(330, 220, 300, 220);
-    ctx.lineTo(220, 220);
-    ctx.quadraticCurveTo(190, 220, 190, 190);
-    ctx.lineTo(190, 160);
-    ctx.quadraticCurveTo(190, 130, 220, 130);
+    ctx.roundRect(300, 30, 100, 70, 25);
     ctx.fill();
+    ctx.stroke();
+
+    // nariz
+    ctx.beginPath();
+    ctx.arc(380, 65, 5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+
+    // sonrisa
+    ctx.beginPath();
+    ctx.arc(345, 80, 20, 0, Math.PI);
+    ctx.stroke();
 }
 function dibujarOjo(ctx) {
     ctx.fillStyle = "white";
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 2;
+
     ctx.beginPath();
-    ctx.arc(280, 160, 15, 0, Math.PI * 2);
+    ctx.arc(335, 60, 13, 0, Math.PI * 2);
     ctx.fill();
+    ctx.stroke();
 
     ctx.fillStyle = "black";
     ctx.beginPath();
-    ctx.arc(285, 160, 7, 0, Math.PI * 2);
+    ctx.arc(340, 60, 6, 0, Math.PI * 2);
     ctx.fill();
 }
 function dibujarPatas(ctx) {
@@ -149,59 +175,77 @@ function dibujarPatas(ctx) {
     ctx.lineWidth = 3;
 
     const patas = [
-        {x: 300, y: 350},
-        {x: 350, y: 350},
-        {x: 400, y: 350},
-        {x: 450, y: 350}
+        {x: 280, y: 360},
+        {x: 350, y: 360},
+        {x: 420, y: 360},
+        {x: 490, y: 360}
     ];
 
     patas.forEach(pata => {
-        // pata
+
         ctx.beginPath();
-        ctx.roundRect(pata.x, pata.y, 40, 90, 15);
+        ctx.roundRect(pata.x, pata.y, 55, 100, 20);
         ctx.fill();
         ctx.stroke();
 
         // uñas
         ctx.fillStyle = "white";
         ctx.beginPath();
-        ctx.arc(pata.x + 10, pata.y + 90, 5, 0, Math.PI * 2);
-        ctx.arc(pata.x + 20, pata.y + 90, 5, 0, Math.PI * 2);
-        ctx.arc(pata.x + 30, pata.y + 90, 5, 0, Math.PI * 2);
+        ctx.arc(pata.x + 15, pata.y + 100, 6, 0, Math.PI * 2);
+        ctx.arc(pata.x + 30, pata.y + 100, 6, 0, Math.PI * 2);
+        ctx.arc(pata.x + 45, pata.y + 100, 6, 0, Math.PI * 2);
         ctx.fill();
+        ctx.stroke();
 
         ctx.fillStyle = "#66BB6A";
     });
 }
 function dibujarPlacas(ctx) {
-    ctx.fillStyle = "#1976D2";
+    ctx.fillStyle = "#3F51B5";
     ctx.strokeStyle = "black";
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 3;
 
-    for (let i = 0; i < 5; i++) {
+    const placas = [
+        {x: 320, y: 230},
+        {x: 360, y: 210},
+        {x: 400, y: 200},
+        {x: 440, y: 205},
+        {x: 480, y: 220},
+        {x: 520, y: 240},
+        {x: 560, y: 260}
+    ];
+
+    placas.forEach(p => {
         ctx.beginPath();
-        ctx.moveTo(330 + i * 40, 260);
-        ctx.lineTo(350 + i * 40, 220);
-        ctx.lineTo(370 + i * 40, 260);
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(p.x + 20, p.y - 40);
+        ctx.lineTo(p.x + 40, p.y);
         ctx.closePath();
         ctx.fill();
         ctx.stroke();
-    }
+    });
 }
 function dibujarManchas(ctx) {
     ctx.fillStyle = "#8BC34A";
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 2;
 
     const manchas = [
-        {x: 310, y: 290, r: 15},
-        {x: 340, y: 260, r: 20},
-        {x: 380, y: 280, r: 18},
-        {x: 410, y: 300, r: 12},
-        {x: 360, y: 310, r: 10}
+        {x: 300, y: 300, r: 20},
+        {x: 340, y: 270, r: 15},
+        {x: 380, y: 310, r: 18},
+        {x: 420, y: 280, r: 12},
+        {x: 460, y: 300, r: 16},
+        {x: 500, y: 290, r: 14},
+        {x: 520, y: 315, r: 12},
+        {x: 360, y: 340, r: 10},
+        {x: 440, y: 345, r: 12}
     ];
 
     manchas.forEach(m => {
         ctx.beginPath();
         ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2);
         ctx.fill();
+        ctx.stroke();
     });
 }
