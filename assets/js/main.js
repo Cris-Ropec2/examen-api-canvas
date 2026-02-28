@@ -69,18 +69,22 @@ function dibujarSuelo(ctx) {
 function dibujarDinosaurio(ctx) {
     dibujarCola(ctx);
     dibujarCuerpo(ctx);
-    dibujarPlacas(ctx);
-    dibujarManchas(ctx);
+    dibujarPatas(ctx);
     dibujarCuello(ctx);
     dibujarCabeza(ctx);
+    dibujarPlacas(ctx);
+    dibujarManchas(ctx);
     dibujarOjo(ctx);
-    dibujarPatas(ctx);
 }
 function dibujarCuerpo(ctx) {
-    ctx.fillStyle = "#4b9d4e";
+    ctx.fillStyle = "#66BB6A";   // verde más claro
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 3;
+
     ctx.beginPath();
-    ctx.ellipse(350, 300, 150, 80, 0, 0, Math.PI * 2);
+    ctx.ellipse(420, 320, 200, 110, 0, 0, Math.PI * 2);
     ctx.fill();
+    ctx.stroke();
 }
 function dibujarCola(ctx) {
     ctx.fillStyle = "#4a934c";
