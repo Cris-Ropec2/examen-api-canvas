@@ -25,7 +25,10 @@ window.onload = function () {
     dibujarSuelo(ctx);
 
     //DINOSAURIO 
+    ctx.save();
+    ctx.translate(-110, 0);
     dibujarDinosaurio(ctx);
+    ctx.restore();
 };
 
 /* ============================= */
@@ -71,13 +74,13 @@ function dibujarSuelo(ctx) {
 /* ============================= */
 
 function dibujarDinosaurio(ctx) {
-    dibujarCola(ctx);        
-    dibujarCuerpo(ctx);      
-    dibujarManchas(ctx);     
-    dibujarPlacas(ctx);      
-    dibujarPatas(ctx);       
-    dibujarCuello(ctx);      
-    dibujarCabeza(ctx);   
+    dibujarCola(ctx);
+    dibujarCuerpo(ctx);
+    dibujarManchas(ctx);
+    dibujarPlacas(ctx);
+    dibujarPatas(ctx);
+    dibujarCuello(ctx);
+    dibujarCabeza(ctx); 
 }
 function dibujarCuerpo(ctx) {
     // Color principal
@@ -97,36 +100,40 @@ function dibujarCuerpo(ctx) {
     ctx.fill();
 }
 function dibujarCola(ctx) {
+
+    // 1️⃣ Parte verde fuerte (base)
     ctx.fillStyle = "#66BB6A";
     ctx.strokeStyle = "black";
     ctx.lineWidth = 3;
 
     ctx.beginPath();
-    ctx.moveTo(470, 300);
-    ctx.quadraticCurveTo(610, 250, 600, 320);
-    ctx.quadraticCurveTo(580, 350, 450, 330);
+    ctx.moveTo(480, 300);
+    ctx.quadraticCurveTo(560, 300, 590, 250);
+    ctx.quadraticCurveTo(600, 370, 470, 330);
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
 
-    // Parte inferior clara
+
+    // 2️⃣ Parte verde claro (ENCIMA)
     ctx.fillStyle = "#9CCC65";
+
     ctx.beginPath();
-    ctx.moveTo(470, 325);
-    ctx.quadraticCurveTo(560, 310, 540, 345);
-    ctx.quadraticCurveTo(520, 355, 470, 340);
+    ctx.moveTo(490, 315);
+    ctx.quadraticCurveTo(545, 310, 575, 280);
+    ctx.quadraticCurveTo(560, 340, 495, 320);
     ctx.closePath();
     ctx.fill();
-    ctx.stroke();
+    ctx.stroke();  
 }
 function dibujarCuello(ctx) {
     ctx.fillStyle = "#66BB6A";
     ctx.strokeStyle = "black";
     ctx.lineWidth = 3;
 
-    for (let i = 0; i < 6; i++) {  
+    for (let i = 0; i < 6; i++) {
         ctx.beginPath();
-        ctx.roundRect(330, 270 - (i * 28), 60, 35, 20);
+        ctx.roundRect(250, 250 - (i * 30), 60, 35, 20);
         ctx.fill();
         ctx.stroke();
     }
@@ -137,58 +144,44 @@ function dibujarCabeza(ctx) {
     ctx.lineWidth = 3;
 
     ctx.beginPath();
-    ctx.roundRect(315, 80, 90, 65, 25);
+    ctx.roundRect(235, 70, 95, 65, 25);
     ctx.fill();
     ctx.stroke();
 
-    // Ojo
+    // OJO 
     ctx.fillStyle = "white";
     ctx.beginPath();
-    ctx.arc(355, 105, 12, 0, Math.PI * 2);
+    ctx.arc(265, 95, 12, 0, Math.PI * 2);
     ctx.fill();
     ctx.stroke();
 
     ctx.fillStyle = "black";
     ctx.beginPath();
-    ctx.arc(360, 105, 5, 0, Math.PI * 2);
+    ctx.arc(260, 95, 5, 0, Math.PI * 2);
     ctx.fill();
 
-    // Nariz
+    // Nariz izquierda
     ctx.beginPath();
-    ctx.arc(390, 105, 4, 0, Math.PI * 2);
+    ctx.arc(245, 95, 4, 0, Math.PI * 2);
     ctx.fill();
     ctx.stroke();
 
     // Sonrisa
     ctx.beginPath();
-    ctx.arc(365, 120, 18, 0, Math.PI);
+    ctx.arc(270, 110, 18, 0, Math.PI);
     ctx.stroke();
 }
-function dibujarOjo(ctx) {
-    ctx.fillStyle = "white";
-    ctx.strokeStyle = "black";
-    ctx.lineWidth = 2;
 
-    ctx.beginPath();
-    ctx.arc(335, 60, 13, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.stroke();
-
-    ctx.fillStyle = "black";
-    ctx.beginPath();
-    ctx.arc(340, 60, 6, 0, Math.PI * 2);
-    ctx.fill();
-}
 function dibujarPatas(ctx) {
     ctx.fillStyle = "#66BB6A";
     ctx.strokeStyle = "black";
     ctx.lineWidth = 3;
 
     const patas = [
-        {x: 280, y: 360, w: 50, h: 95},
-        {x: 340, y: 360, w: 50, h: 95},
-        {x: 420, y: 350, w: 65, h: 110},
-        {x: 500, y: 350, w: 65, h: 110}
+        {x: 260, y: 360, w: 60, h: 110},
+        {x: 330, y: 360, w: 60, h: 110},
+        {x: 430, y: 350, w: 75, h: 125},
+        {x: 510, y: 350, w: 75, h: 125}
     ];
 
     patas.forEach(pata => {
@@ -216,13 +209,13 @@ function dibujarPlacas(ctx) {
     ctx.lineWidth = 3;
 
     const placas = [
-        {x: 330, y: 240},
-        {x: 370, y: 225},
-        {x: 410, y: 215},
-        {x: 450, y: 220},
-        {x: 490, y: 235},
-        {x: 530, y: 255},
-        {x: 570, y: 275}
+        {x: 300, y: 230},
+        {x: 340, y: 210},
+        {x: 390, y: 200},
+        {x: 450, y: 205},
+        {x: 510, y: 220},
+        {x: 560, y: 245},
+        {x: 600, y: 270}
     ];
 
     placas.forEach(p => {
