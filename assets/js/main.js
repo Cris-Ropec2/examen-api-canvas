@@ -10,7 +10,6 @@ la API Canvas de HTML5.
 En esta misma web se mostrara la imagen de referencia.
 ==================================================
 */
-
 window.onload = function () {
     const canvas = document.getElementById("canvasDino");
     const ctx = canvas.getContext("2d");
@@ -18,21 +17,23 @@ window.onload = function () {
     canvas.width = 600;
     canvas.height = 500;
 
-    dibujarEscenario(ctx);
+    dibujarFondo(ctx);
+    dibujarSuelo(ctx);
     dibujarDinosaurio(ctx);
 };
 
 /* ============================= */
-/* FUNCIÓN: Dibujar Escenario    */
+/* ESCENARIO                     */
 /* ============================= */
-function dibujarEscenario(ctx) {
 
-    // Fondo cielo
+function dibujarFondo(ctx) {
     ctx.fillStyle = "#6ec1e4";
     ctx.fillRect(0, 0, 600, 500);
+}
 
-    // Suelo
+function dibujarSuelo(ctx) {
     ctx.fillStyle = "#4CAF50";
+
     ctx.beginPath();
     ctx.arc(200, 500, 300, Math.PI, 2 * Math.PI);
     ctx.fill();
@@ -43,25 +44,37 @@ function dibujarEscenario(ctx) {
 }
 
 /* ============================= */
-/* FUNCIÓN: Dibujar Dinosaurio   */
+/* DINOSAURIO                    */
 /* ============================= */
-function dibujarDinosaurio(ctx) {
 
-    // Cuerpo
+function dibujarDinosaurio(ctx) {
+    dibujarCuerpo(ctx);
+    dibujarCuello(ctx);
+    dibujarCabeza(ctx);
+    dibujarOjo(ctx);
+    dibujarPatas(ctx);
+}
+
+function dibujarCuerpo(ctx) {
     ctx.fillStyle = "#4CAF50";
     ctx.beginPath();
     ctx.ellipse(350, 300, 150, 80, 0, 0, Math.PI * 2);
     ctx.fill();
+}
 
-    // Cuello
+function dibujarCuello(ctx) {
+    ctx.fillStyle = "#4CAF50";
     ctx.fillRect(230, 180, 60, 140);
+}
 
-    // Cabeza
+function dibujarCabeza(ctx) {
+    ctx.fillStyle = "#4CAF50";
     ctx.beginPath();
     ctx.roundRect(200, 130, 120, 80, 30);
     ctx.fill();
+}
 
-    // Ojo
+function dibujarOjo(ctx) {
     ctx.fillStyle = "white";
     ctx.beginPath();
     ctx.arc(280, 160, 15, 0, Math.PI * 2);
@@ -71,8 +84,9 @@ function dibujarDinosaurio(ctx) {
     ctx.beginPath();
     ctx.arc(285, 160, 7, 0, Math.PI * 2);
     ctx.fill();
+}
 
-    // Patas
+function dibujarPatas(ctx) {
     ctx.fillStyle = "#4CAF50";
     ctx.fillRect(320, 330, 40, 100);
     ctx.fillRect(400, 330, 40, 100);
