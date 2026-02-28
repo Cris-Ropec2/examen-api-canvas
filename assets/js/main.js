@@ -77,14 +77,21 @@ function dibujarDinosaurio(ctx) {
     dibujarManchas(ctx);
 }
 function dibujarCuerpo(ctx) {
-    ctx.fillStyle = "#66BB6A";   // verde más claro
+    // Color principal
+    ctx.fillStyle = "#66BB6A";
     ctx.strokeStyle = "black";
     ctx.lineWidth = 3;
 
     ctx.beginPath();
-    ctx.ellipse(420, 320, 200, 110, 0, 0, Math.PI * 2);
+    ctx.ellipse(360, 310, 160, 90, 0, 0, Math.PI * 2);
     ctx.fill();
     ctx.stroke();
+
+    // Parte inferior (segundo color)
+    ctx.fillStyle = "#8BC34A";
+    ctx.beginPath();
+    ctx.ellipse(360, 340, 150, 60, 0, 0, Math.PI);
+    ctx.fill();
 }
 function dibujarCola(ctx) {
     ctx.fillStyle = "#66BB6A";
@@ -92,9 +99,9 @@ function dibujarCola(ctx) {
     ctx.lineWidth = 3;
 
     ctx.beginPath();
-    ctx.moveTo(480, 300);
-    ctx.quadraticCurveTo(580, 250, 550, 320);
-    ctx.quadraticCurveTo(520, 350, 480, 330);
+    ctx.moveTo(490, 300);
+    ctx.quadraticCurveTo(600, 250, 570, 320);
+    ctx.quadraticCurveTo(540, 350, 490, 330);
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
@@ -141,15 +148,30 @@ function dibujarPatas(ctx) {
     ctx.strokeStyle = "black";
     ctx.lineWidth = 3;
 
-    ctx.beginPath();
-    ctx.roundRect(320, 330, 50, 100, 20);
-    ctx.fill();
-    ctx.stroke();
+    const patas = [
+        {x: 300, y: 350},
+        {x: 350, y: 350},
+        {x: 400, y: 350},
+        {x: 450, y: 350}
+    ];
 
-    ctx.beginPath();
-    ctx.roundRect(400, 330, 50, 100, 20);
-    ctx.fill();
-    ctx.stroke();
+    patas.forEach(pata => {
+        // pata
+        ctx.beginPath();
+        ctx.roundRect(pata.x, pata.y, 40, 90, 15);
+        ctx.fill();
+        ctx.stroke();
+
+        // uñas
+        ctx.fillStyle = "white";
+        ctx.beginPath();
+        ctx.arc(pata.x + 10, pata.y + 90, 5, 0, Math.PI * 2);
+        ctx.arc(pata.x + 20, pata.y + 90, 5, 0, Math.PI * 2);
+        ctx.arc(pata.x + 30, pata.y + 90, 5, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = "#66BB6A";
+    });
 }
 function dibujarPlacas(ctx) {
     ctx.fillStyle = "#1976D2";
@@ -169,15 +191,17 @@ function dibujarPlacas(ctx) {
 function dibujarManchas(ctx) {
     ctx.fillStyle = "#8BC34A";
 
-    ctx.beginPath();
-    ctx.arc(330, 280, 20, 0, Math.PI * 2);
-    ctx.fill();
+    const manchas = [
+        {x: 310, y: 290, r: 15},
+        {x: 340, y: 260, r: 20},
+        {x: 380, y: 280, r: 18},
+        {x: 410, y: 300, r: 12},
+        {x: 360, y: 310, r: 10}
+    ];
 
-    ctx.beginPath();
-    ctx.arc(380, 260, 25, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.beginPath();
-    ctx.arc(420, 300, 18, 0, Math.PI * 2);
-    ctx.fill();
+    manchas.forEach(m => {
+        ctx.beginPath();
+        ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2);
+        ctx.fill();
+    });
 }
