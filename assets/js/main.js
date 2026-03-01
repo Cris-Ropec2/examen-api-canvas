@@ -1,14 +1,35 @@
 /*
-==================================================
-Aplicación: Dibujo de Dinosaurio con API Canvas
+==========================================================
+Aplicación: Dinosaurio con API Canvas
 Autor: Cristopher Rodríguez Pérez
 Curso: Graficación
 Fecha: 28/02/2026
+
 Descripción:
-Aplicación web que dibuja un dinosaurio utilizando
-la API Canvas de HTML5.
-En esta misma web se mostrara la imagen de referencia.
-==================================================
+Aplicación web desarrollada con JavaScript y la API 
+Canvas de HTML5 que dibuja un dinosaurio por medio 
+de figuras geométricas.
+
+La aplicación incluye:
+- Escenario (fondo, sol, nubes y suelo)
+- Dinosaurio compuesto por múltiples funciones
+- Uso de transformaciones 
+- Manejo de capas mediante orden de dibujo
+
+Tecnologías utilizadas:
+- HTML5
+- CSS3
+- JavaScript
+- API Canvas
+==========================================================
+*/
+
+/*
+----------------------------------------------------------
+Función principal
+Se ejecuta cuando la página termina de cargar.
+Inicializa el canvas y dibuja el escenario y el dinosaurio.
+----------------------------------------------------------
 */
 window.onload = function () {
     const canvas = document.getElementById("canvasDino");
@@ -31,10 +52,12 @@ window.onload = function () {
     ctx.restore();
 };
 
-/* ============================= */
-/* ESCENARIO                     */
-/* ============================= */
-
+/* 
+ESCENARIO         
+Función: dibujarFondo
+Descripción:
+Pinta el fondo completo del canvas con un color azul
+simulando el cielo.*/
 function dibujarFondo(ctx) {
     ctx.fillStyle = "#6ec1e4";
     ctx.fillRect(0, 0, 600, 500);
@@ -70,9 +93,16 @@ function dibujarSuelo(ctx) {
 }
 
 /* ============================= */
-/* DINOSAURIO                    */
+DINOSAURIO    
+/*----------------------------------------------------------
+Función: dibujarDinosaurio
+Descripción:
+Orquesta el dibujo completo del dinosaurio.
+El orden de las funciones determina la profundidad
+visual
+----------------------------------------------------------
+*/
 /* ============================= */
-
 function dibujarDinosaurio(ctx) {
     dibujarCola(ctx);
     dibujarPatas(ctx); 
