@@ -75,12 +75,12 @@ function dibujarSuelo(ctx) {
 
 function dibujarDinosaurio(ctx) {
     dibujarCola(ctx);
-    dibujarCuerpo(ctx);
-    dibujarManchas(ctx);
+    dibujarPatas(ctx);    
+    dibujarCuerpo(ctx);   
+    dibujarManchas(ctx);  
     dibujarPlacas(ctx);
-    dibujarPatas(ctx);
     dibujarCuello(ctx);
-    dibujarCabeza(ctx); 
+    dibujarCabeza(ctx);
 }
 function dibujarCuerpo(ctx) {
     // Color principal
@@ -175,9 +175,9 @@ function dibujarPatas(ctx) {
 
     const patas = [
         {x: 270, y: 365, w: 55, h: 110},
-        {x: 290, y: 365, w: 55, h: 110},
+        {x: 290, y: 365, w: 60, h: 110},
         {x: 410, y: 365, w: 55, h: 110},
-        {x: 430, y: 365, w: 55, h: 110}
+        {x: 430, y: 365, w: 60, h: 110}
     ];
 
     patas.forEach(pata => {
