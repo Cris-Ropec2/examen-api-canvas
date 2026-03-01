@@ -24,50 +24,66 @@ Tecnologías utilizadas:
 ==========================================================
 */
 
-/*
-----------------------------------------------------------
-Función principal
-Se ejecuta cuando la página termina de cargar.
-Inicializa el canvas y dibuja el escenario y el dinosaurio.
-----------------------------------------------------------
-*/
+
+/* ===================================================== */
+/* INICIALIZACIÓN DEL CANVAS                            */
+/* ===================================================== */
 window.onload = function () {
+    // Obtener referencia al elemento canvas del HTML
     const canvas = document.getElementById("canvasDino");
+    // Obtener referencia al elemento canvas del HTML
     const ctx = canvas.getContext("2d");
 
+    // Definir tamaño del canvas
     canvas.width = 600;
     canvas.height = 500;
 
-    //ESENARIO
+    /* ============================= */
+    /* DIBUJO DEL ESCENARIO          */
+    /* ============================= */
     dibujarFondo(ctx);
     dibujarSol(ctx);
     dibujarNube(ctx, 250, 100);
     dibujarNube(ctx, 420, 150);
     dibujarSuelo(ctx);
 
-    //DINOSAURIO 
+    /* ============================= */
+    /* DIBUJO DEL DINOSAURIO         */
+    /* ============================= */
+
+    // Se usa translate para mover el dinosaurio ligeramente al frente
     ctx.save();
     ctx.translate(-100, 0);
     dibujarDinosaurio(ctx);
     ctx.restore();
 };
 
-/* 
-ESCENARIO         
-Función: dibujarFondo
-Descripción:
-Pinta el fondo completo del canvas con un color azul
-simulando el cielo.*/
+/* ===================================================== */
+/* ESCENARIO                                             */
+/* ===================================================== */
+
+/**
+ * Dibuja el fondo del cielo
+ */
 function dibujarFondo(ctx) {
     ctx.fillStyle = "#6ec1e4";
     ctx.fillRect(0, 0, 600, 500);
 }
+/**
+ * Dibuja el sol utilizando un círculo
+ */
 function dibujarSol(ctx) {
     ctx.fillStyle = "#FFD54F";
     ctx.beginPath();
     ctx.arc(120, 100, 60, 0, Math.PI * 2);
     ctx.fill();
 }
+/**
+ * Dibuja una nube usando tres círculos superpuestos
+ * @param {CanvasRenderingContext2D} ctx
+ * @param {number} x - Posición horizontal
+ * @param {number} y - Posición vertical
+ */
 function dibujarNube(ctx, x, y) {
     ctx.fillStyle = "white";
     ctx.beginPath();
@@ -76,6 +92,9 @@ function dibujarNube(ctx, x, y) {
     ctx.arc(x + 60, y, 25, 0, Math.PI * 2);
     ctx.fill();
 }
+/**
+ * Dibuja el suelo con formas semicirculares
+ */
 function dibujarSuelo(ctx) {
     ctx.fillStyle = "#4CAF50";
     ctx.strokeStyle = "black";
@@ -92,17 +111,13 @@ function dibujarSuelo(ctx) {
     ctx.stroke();
 }
 
-/* ============================= */
-DINOSAURIO    
-/*----------------------------------------------------------
-Función: dibujarDinosaurio
-Descripción:
-Orquesta el dibujo completo del dinosaurio.
-El orden de las funciones determina la profundidad
-visual
-----------------------------------------------------------
-*/
-/* ============================= */
+/* ===================================================== */
+/* DINOSAURIO                                            */
+/* ===================================================== */
+
+/**
+ * Función principal que organiza el dibujo del dinosaurio
+ */
 function dibujarDinosaurio(ctx) {
     dibujarCola(ctx);
     dibujarPatas(ctx); 
@@ -112,8 +127,11 @@ function dibujarDinosaurio(ctx) {
     dibujarPlacas(ctx);
     dibujarCabeza(ctx);
 }
+/**
+ * Dibuja el cuerpo principal usando elipse
+ */
 function dibujarCuerpo(ctx) {
-    // Color principal
+    // Parte principal
     ctx.fillStyle = "#66BB6A";
     ctx.strokeStyle = "black";
     ctx.lineWidth = 3;
@@ -123,15 +141,18 @@ function dibujarCuerpo(ctx) {
     ctx.fill();
     ctx.stroke();
 
-    // Parte inferior (segundo color)
+    // Parte inferior con color diferente
     ctx.fillStyle = "#8BC34A";
     ctx.beginPath();
     ctx.ellipse(380, 330, 150, 60, 0, 0, Math.PI);
     ctx.fill();
 }
+/**
+ * Dibuja la cola usando curvas cuadráticas
+ */
 function dibujarCola(ctx) {
 
-    // Parte verde fuerte 
+    // Parte externa
     ctx.fillStyle = "#9CCC65";
     ctx.strokeStyle = "black";
     ctx.lineWidth = 3;
@@ -145,7 +166,7 @@ function dibujarCola(ctx) {
     ctx.stroke();
 
 
-    // Parte verde claro 
+    // Parte interna con tono distinto
     ctx.fillStyle = "#66BB6A";
 
     ctx.beginPath();
@@ -156,6 +177,9 @@ function dibujarCola(ctx) {
     ctx.fill();
     ctx.stroke();  
 }
+/**
+ * Dibuja el cuello segmentado usando rectángulos redondeados
+ */
 function dibujarCuello(ctx) {
     ctx.fillStyle = "#66BB6A";
     ctx.strokeStyle = "black";
@@ -168,6 +192,9 @@ function dibujarCuello(ctx) {
         ctx.stroke();
     }
 }
+/**
+ * Dibuja el cuello segmentado usando rectángulos redondeados
+ */
 function dibujarCabeza(ctx) { 
     ctx.fillStyle = "#66BB6A"; 
     ctx.strokeStyle = "black"; 
@@ -189,15 +216,20 @@ function dibujarCabeza(ctx) {
     ctx.beginPath(); 
     ctx.arc(210, 95, 5, 0, Math.PI * 2); 
     ctx.fill(); 
+
     // Nariz 
     ctx.beginPath();
     ctx.arc(160, 105, 4, 0, Math.PI * 2); 
     ctx.fill(); ctx.stroke(); 
+
     // Sonrisa 
     ctx.beginPath();
     ctx.arc(170, 110, 18, 0, Math.PI); 
     ctx.stroke(); 
 }
+/**
+ * Dibuja las patas y sus uñas
+ */
 function dibujarPatas(ctx) {
     ctx.fillStyle = "#66BB6A";
     ctx.strokeStyle = "black";
@@ -229,6 +261,9 @@ function dibujarPatas(ctx) {
         ctx.fillStyle = "#66BB6A";
     });
 }
+/**
+ * Dibuja las patas y sus uñas
+ */
 function dibujarPlacas(ctx) {
     ctx.fillStyle = "#3F51B5";
     ctx.strokeStyle = "black";
@@ -246,8 +281,11 @@ function dibujarPlacas(ctx) {
 
     ctx.save();
 
-    ctx.translate(p.x, p.y);  // mover origen a base
-    ctx.rotate(p.ang);        // rotar según ángulo individual
+    // Mover el origen a la base de la placa
+    ctx.translate(p.x, p.y); 
+
+    // Mover el origen a la base de la placa
+    ctx.rotate(p.ang);       
 
     ctx.beginPath();
     ctx.moveTo(0, 0);
@@ -260,6 +298,9 @@ function dibujarPlacas(ctx) {
     ctx.restore();
 });
 }
+/**
+ * Dibuja manchas decorativas en el cuerpo
+ */
 function dibujarManchas(ctx) {
     ctx.fillStyle = "#8BC34A";
     ctx.strokeStyle = "black";
