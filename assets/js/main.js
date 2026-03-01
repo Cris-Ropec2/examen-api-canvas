@@ -89,14 +89,14 @@ function dibujarCuerpo(ctx) {
     ctx.lineWidth = 3;
 
     ctx.beginPath();
-    ctx.ellipse(380, 315, 190, 80, 0, 0, Math.PI * 2);
+    ctx.ellipse(380, 315, 160, 80, 0, 0, Math.PI * 2);
     ctx.fill();
     ctx.stroke();
 
     // Parte inferior (segundo color)
     ctx.fillStyle = "#8BC34A";
     ctx.beginPath();
-    ctx.ellipse(360, 340, 150, 60, 0, 0, Math.PI);
+    ctx.ellipse(380, 330, 150, 60, 0, 0, Math.PI);
     ctx.fill();
 }
 function dibujarCola(ctx) {
@@ -133,7 +133,7 @@ function dibujarCuello(ctx) {
 
     for (let i = 0; i < 6; i++) {
         ctx.beginPath();
-        ctx.roundRect(180, 260 - (i * 28), 55, 35, 20);
+        ctx.roundRect(200, 260 - (i * 28), 55, 35, 20);
         ctx.fill();
         ctx.stroke();
     }
@@ -144,28 +144,28 @@ function dibujarCabeza(ctx) {
     ctx.lineWidth = 3;
     
     ctx.beginPath();
-    ctx.roundRect(130, 70, 95, 65, 25); 
+    ctx.roundRect(150, 70, 95, 65, 25); 
     ctx.fill(); 
     ctx.stroke(); 
     
     // OJO 
     ctx.fillStyle = "white"; 
     ctx.beginPath();
-    ctx.arc(265, 95, 12, 0, Math.PI * 2); 
+    ctx.arc(210, 95, 12, 0, Math.PI * 2); 
     ctx.fill(); 
     ctx.stroke();
 
     ctx.fillStyle = "black"; 
     ctx.beginPath(); 
-    ctx.arc(260, 95, 5, 0, Math.PI * 2); 
+    ctx.arc(210, 95, 5, 0, Math.PI * 2); 
     ctx.fill(); 
     // Nariz 
     ctx.beginPath();
-    ctx.arc(245, 95, 4, 0, Math.PI * 2); 
+    ctx.arc(160, 105, 4, 0, Math.PI * 2); 
     ctx.fill(); ctx.stroke(); 
     // Sonrisa 
     ctx.beginPath();
-    ctx.arc(270, 110, 18, 0, Math.PI); 
+    ctx.arc(170, 110, 18, 0, Math.PI); 
     ctx.stroke(); 
 }
 function dibujarPatas(ctx) {
@@ -174,10 +174,10 @@ function dibujarPatas(ctx) {
     ctx.lineWidth = 3;
 
     const patas = [
-        {x: 300, y: 365, w: 55, h: 110},
-    {x: 360, y: 365, w: 55, h: 110},
-    {x: 430, y: 365, w: 55, h: 110},
-    {x: 490, y: 365, w: 55, h: 110}
+        {x: 270, y: 365, w: 55, h: 110},
+        {x: 290, y: 365, w: 55, h: 110},
+        {x: 410, y: 365, w: 55, h: 110},
+        {x: 430, y: 365, w: 55, h: 110}
     ];
 
     patas.forEach(pata => {
