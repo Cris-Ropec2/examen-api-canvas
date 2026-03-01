@@ -102,26 +102,26 @@ function dibujarCuerpo(ctx) {
 function dibujarCola(ctx) {
 
     // Parte verde fuerte 
-    ctx.fillStyle = "#66BB6A";
+    ctx.fillStyle = "#9CCC65";
     ctx.strokeStyle = "black";
     ctx.lineWidth = 3;
 
     ctx.beginPath();
-    ctx.moveTo(480, 300);
-    ctx.quadraticCurveTo(560, 300, 590, 250);
-    ctx.quadraticCurveTo(600, 370, 470, 330);
+    ctx.moveTo(480, 300);                      
+    ctx.quadraticCurveTo(580, 300, 630, 230);  
+    ctx.quadraticCurveTo(650, 380, 460, 340);
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
 
 
     // Parte verde claro 
-    ctx.fillStyle = "#9CCC65";
+    ctx.fillStyle = "#66BB6A";
 
     ctx.beginPath();
-    ctx.moveTo(490, 315);
-    ctx.quadraticCurveTo(545, 310, 575, 280);
-    ctx.quadraticCurveTo(560, 340, 495, 320);
+    ctx.moveTo(485, 300);
+    ctx.quadraticCurveTo(565, 285, 610, 250);
+    ctx.quadraticCurveTo(590, 355, 480, 325);
     ctx.closePath();
     ctx.fill();
     ctx.stroke();  
@@ -205,23 +205,30 @@ function dibujarPlacas(ctx) {
     ctx.lineWidth = 3;
 
     const placas = [
-        {x: 330, y: 230},
-    {x: 370, y: 210},
-    {x: 410, y: 200},
-    {x: 450, y: 210},
-    {x: 490, y: 225},
-    {x: 530, y: 250}
+        {x: 275, y: 255, ang: -0.30},
+        {x: 340, y: 238, ang: -0.10},
+        {x: 400, y: 235, ang:  0.10},
+        {x: 480, y: 250, ang:  0.48},
+        {x: 560, y: 275, ang: -0.45}
     ];
 
     placas.forEach(p => {
-        ctx.beginPath();
-        ctx.moveTo(p.x, p.y);
-        ctx.lineTo(p.x + 20, p.y - 40);
-        ctx.lineTo(p.x + 40, p.y);
-        ctx.closePath();
-        ctx.fill();
-        ctx.stroke();
-    });
+
+    ctx.save();
+
+    ctx.translate(p.x, p.y);  // mover origen a base
+    ctx.rotate(p.ang);        // rotar según ángulo individual
+
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(20, -40);
+    ctx.lineTo(40, 0);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.restore();
+});
 }
 function dibujarManchas(ctx) {
     ctx.fillStyle = "#8BC34A";
@@ -236,8 +243,7 @@ function dibujarManchas(ctx) {
         {x: 460, y: 300, r: 16},
         {x: 500, y: 290, r: 14},
         {x: 520, y: 315, r: 12},
-        {x: 360, y: 340, r: 10},
-        {x: 440, y: 345, r: 12}
+        {x: 260, y: 310, r: 10}
     ];
 
     manchas.forEach(m => {
