@@ -4,7 +4,7 @@
 
 - **Autor:** Cristopher Rodríguez Pérez  
 - **Curso:** Graficación  
-- **Fecha:** 28 de febrero de 2026  
+- **Fecha de realización:** 28 de febrero de 2026  
 - **Tipo de proyecto:** Aplicación Web con HTML5 Canvas  
 
 ---
