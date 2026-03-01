@@ -75,11 +75,11 @@ function dibujarSuelo(ctx) {
 
 function dibujarDinosaurio(ctx) {
     dibujarCola(ctx);
-    dibujarPatas(ctx);    
+    dibujarPatas(ctx); 
+    dibujarCuello(ctx);   
     dibujarCuerpo(ctx);   
     dibujarManchas(ctx);  
     dibujarPlacas(ctx);
-    dibujarCuello(ctx);
     dibujarCabeza(ctx);
 }
 function dibujarCuerpo(ctx) {
